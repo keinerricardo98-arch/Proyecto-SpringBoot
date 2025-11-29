@@ -28,7 +28,7 @@ public class AuthController {
             @Valid @RequestBody LoginRequest request,
             HttpServletRequest httpRequest) {
         
-        log.info("🔐 Intento de login: {} - Método: {}", request.getIdentifier(), request.getAuthMethod());
+        log.info("Intento de login: {} - Método: {}", request.getIdentifier(), request.getAuthMethod());
         
         AuthResponse response = authService.authenticate(request, httpRequest);
         
@@ -39,7 +39,7 @@ public class AuthController {
     public ResponseEntity<AuthResponse> verifyTwoFactor(
             @Valid @RequestBody TwoFactorRequest request) {
         
-        log.info("📱 Verificación 2FA para sesión: {}", request.getSessionToken());
+        log.info("Verificación 2FA para sesión: {}", request.getSessionToken());
         
         AuthResponse response = twoFactorService.verify2FACode(
                 request.getSessionToken(), 
@@ -54,7 +54,7 @@ public class AuthController {
         String authToken = token.replace("Bearer ", "");
         twoFactorService.logout(authToken);
         
-        log.info("🚪 Usuario cerró sesión");
+        log.info("Usuario cerró sesión");
         
         return ResponseEntity.ok(AuthResponse.builder()
                 .success(true)
