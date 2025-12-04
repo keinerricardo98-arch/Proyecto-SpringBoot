@@ -22,7 +22,7 @@ public class TwoFactorService {
         log.info("Sesión 2FA generada para usuario: {}", user.getUsername());
 
         // En un sistema real, aquí enviarías el código por email/SMS
-        log.info("Código 2FA para {}: 123456", user.getUsername());
+        log.info("🔐 Código 2FA para {}: 123456", user.getUsername());
 
         return sessionToken;
     }

@@ -27,8 +27,5 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
-
-    public boolean userExists(String identifier) {
-        return userRepository.findByUsernameOrEmail(identifier).isPresent();
-    }
+}
 }
